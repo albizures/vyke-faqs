@@ -1,0 +1,97 @@
+---
+export type Props = {
+  faq: FaqEntry;
+};
+
+import Footer from "../../../components/Footer.astro";
+import { getFaqs, type FaqEntry } from "../../../content/config";
+import Page from "../../../layouts/Page.astro";
+import { slugify } from "../../../utils/collections";
+
+export async function getStaticPaths() {
+  const faqs = await getFaqs(({ data }) => !data.draft);
+
+  return faqs.map((faq) => ({
+    params: { slug: slugify(faq.data) },
+    props: { faq },
+  }));
+}
+
+const { faq } = Astro.props;
+const { Content } = await faq.render();
+---
+
+<Page>
+  <div class="max-w-2xl px-6 mx-auto mt-10">
+    <h1 class="text-4xl text-center text-balance font-serif font-bold">
+      {faq.data.title}
+    </h1>
+    <div class="text-center mt-4">
+      {
+        faq.data.tags.map((tag) => {
+          return (
+            <a href={`/${tag}`} class="btn btn-xs">
+              {tag}
+            </a>
+          );
+        })
+      }
+    </div>
+    <article class="prose prose-pre:mb-0 mt-6">
+      <Content />
+    </article>
+  </div>
+  <Footer />
+</Page>
+<style is:global>
+  code {
+    counter-reset: step;
+    counter-increment: step 0;
+  }
+
+  code .line {
+    @apply relative ml-6;
+  }
+  code .line::before {
+    content: counter(step);
+    counter-increment: step;
+    @apply absolute w-4 inline-block text-right right-full mr-4 whitespace-nowrap;
+
+    color: rgba(115, 138, 148, 0.4);
+  }
+
+  .markdown-alert {
+    @apply border-l-4 mb-2 px-4;
+  }
+
+  .markdown-alert-note {
+    @apply border-l-info text-info;
+  }
+
+  .markdown-alert-tip {
+    @apply border-l-success text-success;
+  }
+  .markdown-alert-important {
+    @apply border-l-secondary text-secondary;
+  }
+
+  .markdown-alert-warning {
+    @apply border-l-warning text-warning;
+  }
+
+  .markdown-alert-caution {
+    @apply border-l-error text-error;
+  }
+
+  .markdown-alert-title {
+    @apply mb-0 mt-2;
+  }
+
+  .markdown-alert > :not(.markdown-alert-title) {
+    @apply text-base-content mt-2;
+  }
+
+  .markdown-alert svg {
+    @apply inline-block align-text-bottom mr-2;
+  }
+</style>
