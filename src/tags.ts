@@ -35,7 +35,7 @@ export const tagIcons: Record<Tag, IconName> = {
 };
 
 export function sortByPriority(tags: Array<Tag>) {
-  return tags.toSorted((a, b) => {
+  return [...tags].sort((a, b) => {
     const priorityA = tagPriority[a];
     const priorityB = tagPriority[b];
     if (priorityA > priorityB) {
