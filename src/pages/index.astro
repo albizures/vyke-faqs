@@ -2,17 +2,19 @@
 import Page from "../layouts/Page.astro";
 import { getFaqs } from "../content/config";
 import { slugify } from "../utils/collections";
+import Footer from "../components/Footer.astro";
+import HorizontalSection from "../components/HorizontalSection.astro";
 
 const faqs = await getFaqs();
 ---
 
 <Page>
-  <div class="max-w-2xl px-6 mx-auto mt-10">
+  <HorizontalSection>
     <ul class="grid grid-cols-2 gap-2">
       {
         faqs.map((faq) => {
           return (
-            <li class="card bg-base-100 border shadow-xl">
+            <li class="card bg-base-100 border border-base-300">
               <div class="card-body p-4">
                 <a href={`/faqs/${slugify(faq.data)}`}>
                   <h2 class="card-title text-lg">{faq.data.title}</h2>
@@ -40,5 +42,6 @@ const faqs = await getFaqs();
         })
       }
     </ul>
-  </div>
+  </HorizontalSection>
+  <Footer />
 </Page>

@@ -4,6 +4,7 @@ export type Props = {
 };
 
 import Footer from "../../../components/Footer.astro";
+import HorizontalSection from "../../../components/HorizontalSection.astro";
 import { getFaqs, type FaqEntry } from "../../../content/config";
 import Page from "../../../layouts/Page.astro";
 import { slugify } from "../../../utils/collections";
@@ -22,25 +23,31 @@ const { Content } = await faq.render();
 ---
 
 <Page>
-  <div class="max-w-2xl px-6 mx-auto mt-10">
-    <h1 class="text-4xl text-center text-balance font-serif font-bold">
-      {faq.data.title}
-    </h1>
-    <div class="text-center mt-4">
-      {
-        faq.data.tags.map((tag) => {
-          return (
-            <a href={`/${tag}`} class="btn btn-xs">
-              {tag}
-            </a>
-          );
-        })
-      }
-    </div>
-    <article class="prose prose-pre:mb-0 mt-6">
+  <div class="border-b border-base-300 pb-3">
+    <HorizontalSection>
+      <h1 class="text-4xl text-center text-balance font-serif font-bold">
+        {faq.data.title}
+      </h1>
+      <div class="text-center mt-4">
+        {
+          faq.data.tags.map((tag) => {
+            return (
+              <a href={`/${tag}`} class="btn btn-xs">
+                {tag}
+              </a>
+            );
+          })
+        }
+      </div>
+    </HorizontalSection>
+  </div>
+  <HorizontalSection>
+    <article
+      class="prose max-w-full prose-p:mt-4 prose-p:mb-0 prose-pre:mb-0 prose-pre:mt-2 mt-6"
+    >
       <Content />
     </article>
-  </div>
+  </HorizontalSection>
   <Footer />
 </Page>
 <style is:global>

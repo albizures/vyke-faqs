@@ -24,8 +24,8 @@ dependencies:
     specifier: ^0.5.10
     version: 0.5.10(tailwindcss@3.4.1)
   '@vyke/astro':
-    specifier: ^0.0.3
-    version: 0.0.3
+    specifier: ^0.0.4
+    version: 0.0.4
   '@vyke/dom':
     specifier: ^0.0.4
     version: 0.0.4(@vyke/results@0.1.0)
@@ -36,7 +36,7 @@ dependencies:
     specifier: ^4.2.6
     version: 4.2.6(typescript@5.3.3)
   astro-icon:
-    specifier: 1.0.2
+    specifier: ^1.0.2
     version: 1.0.2
   daisyui:
     specifier: ^4.6.0
@@ -1075,8 +1075,8 @@ packages:
     resolution: {integrity: sha512-KYSIHVmslkaCDyw013pphY+d7x1qV8IZupYfeIfzNA+nsaWHbn5uPuQRvdRFsa9zFzGeudPuoGoZ1Op4jrJXIQ==}
     dev: false
 
-  /@vyke/astro@0.0.3:
-    resolution: {integrity: sha512-PpjUr7xssD7DLfE57GFeWMFuKRXhZodo+i6bPUOiuSanOshsKcHZJBL6wElj2ZwP5yD5w6T8MTG9KVrP0ku9eQ==}
+  /@vyke/astro@0.0.4:
+    resolution: {integrity: sha512-/DfAJG4llASnJ7LayDIpWDEgQZkTNiLi9f0V5APHa3PRkC6OO5i/wngypTTapLb/17xmaOY5NU7yHpQ7ywiX5Q==}
     dev: false
 
   /@vyke/dom@0.0.4(@vyke/results@0.1.0):
