@@ -1,0 +1,26 @@
+export type IconName = keyof typeof icons;
+
+export const icons = {
+  stopwatch: "fa-solid:stopwatch",
+  alarm: "fa-solid:bell",
+  timer: "fa-solid:hourglass-half",
+  clock: "fa-solid:clock",
+  play: "fa-solid:play",
+  pause: "fa-solid:pause",
+  reload: "fa-solid:redo-alt",
+  edit: "fa-solid:pencil-alt",
+  caret: "fa-solid:caret-down",
+  settings: "fa-solid:cog",
+  twitter: "fa-brands:twitter",
+  github: "fa-brands:github",
+  stop: "fa-solid:stop",
+  info: "fa-solid:info",
+  pip: "fa-solid:window-minimize",
+  javascript: "fa-brands:js",
+  typescript: "devicon-plain:typescript",
+  html: "fa-brands:html5",
+  css: "devicon-plain:css3",
+  react: "fa-brands:react",
+  vanillajs: "fa-solid:ice-cream",
+  others: "fa-solid:info",
+};

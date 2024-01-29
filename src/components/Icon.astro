@@ -4,29 +4,10 @@ export type Props = {
   class?: string;
 };
 
-export type IconName = keyof typeof icons;
-
 import { Icon as AstroIcon } from "astro-icon/components";
+import { icons, type IconName } from "../icons";
 
 const { icon, class: className } = Astro.props;
-
-const icons = {
-  stopwatch: "fa-solid:stopwatch",
-  alarm: "fa-solid:bell",
-  timer: "fa-solid:hourglass-half",
-  clock: "fa-solid:clock",
-  play: "fa-solid:play",
-  pause: "fa-solid:pause",
-  reload: "fa-solid:redo-alt",
-  edit: "fa-solid:pencil-alt",
-  caret: "fa-solid:caret-down",
-  settings: "fa-solid:cog",
-  twitter: "fa-brands:twitter",
-  github: "fa-brands:github",
-  stop: "fa-solid:stop",
-  info: "fa-solid:info",
-  pip: "fa-solid:window-minimize",
-};
 
 const iconName = icons[icon];
 ---

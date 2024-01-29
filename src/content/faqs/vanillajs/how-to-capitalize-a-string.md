@@ -2,7 +2,8 @@
 title: How to capitalize a string with JavaScript
 featured: false
 tags:
-  - vanillajs
+  - VanillaJS
+  - JavaScript
 description: JavaScript doesn't have a capitalize function
 ---
 

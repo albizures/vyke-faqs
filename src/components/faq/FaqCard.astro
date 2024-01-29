@@ -1,0 +1,44 @@
+---
+export type Props = {
+  faq: FaqEntry;
+};
+
+import { type FaqEntry } from "../../content/config";
+import { slugify } from "../../utils/collections";
+import Icon from "../Icon.astro";
+
+import { tagIcons, sortByPriority } from "../../tags";
+
+const { faq } = Astro.props;
+const mainTag = sortByPriority(faq.data.tags)[0]!;
+---
+
+<li class="card bg-base-100">
+  <div class="card-body px-4 py-2">
+    <a class="group" href={`/faqs/${slugify(faq.data)}`}>
+      <div class="flex items-center">
+        <div
+          class:list={[
+            "aspect-square group-hover:border-secondary flex justify-center bg-base-200 items-center border-2 border-base-300 h-full p-2 mr-3 rounded-lg",
+            {
+              "text-secondary": mainTag === "VanillaJS",
+              "text-warning": mainTag === "JavaScript",
+              "text-error": mainTag === "HTML",
+              "text-info": ["TypeScript", "React.js", "CSS"].includes(mainTag),
+            },
+          ]}
+        >
+          <Icon class="text-3xl" icon={tagIcons[mainTag]} />
+        </div>
+        <div>
+          <div class="text-xs opacity-70 font-semibold">{mainTag}</div>
+          <h2
+            class="card-title pb-1 text-sm line-clamp-2 group-hover:underline decoration-wavy decoration-secondary"
+          >
+            {faq.data.title}
+          </h2>
+        </div>
+      </div>
+    </a>
+  </div>
+</li>
